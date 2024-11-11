@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started</title>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <div x-data="$store.options" class="container">
+      <template x-for="variable in ['x', 'y', 'z']">
+        <div class="select">
+          <div class="select__name" x-text="variable.toUpperCase()"></div>
+          <div class="select__options">
+            <template x-for="option in options">
+              <div 
+                @click="$store.options.select(variable, option.value)"
+                :class="'option' + (option.variable === variable ? ' selected' : '')"
+                >
+                <img :src="'img/' + option.value + '.png'" alt="" draggable="false">
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
+
+      <div class="code">
+          <span class="code__inner">
+            <span class="digit" x-text="firstDigit"></span>
+            <span class="divider">-</span>
+            <span class="digit" x-text="secondDigit"></span>
+            <span class="divider">-</span>
+            <span class="digit" x-text="thirdDigit"></span>
+          </span>
+      </div>
+
+      
+    <div class="footer">
+      <a href="#">
+        <img src="img/github-mark-white.png" alt="Github logo">
+        Report an issue
+      </a>
+    </footer>
+    </div>
+  </body>
+</html>
